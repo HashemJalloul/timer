@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-size: 2em;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    <script>
+        let timeLeft = 10; // مدة المؤقت بالثواني
+
+        function updateTimer() {
+            if (timeLeft >= 0) {
+                document.getElementById('timer').textContent = `Time left: ${timeLeft} seconds`;
+                timeLeft -= 1;
+            }
+        }
+
+        const interval = setInterval(() => {
+            updateTimer();
+            if (timeLeft < 0) {
+                clearInterval(interval);
+                document.getElementById('timer').textContent = 'Time is up!';
+            }
+        }, 1000);
+
+        window.onload = updateTimer;
+    </script>
+</head>
+<body>
+    <div id="timer"></div>
+</body>
+</html>
